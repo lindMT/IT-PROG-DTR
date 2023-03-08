@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="report">
+	<xsd:complexType>
+		<xsd:sequence>
+			<xsd:element name="startOfWeekDate" minOccurs="1" maxOccurs="6">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="date" maxOccurs="6">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="status">
+										<xsd:complexType>
+											<xsd:simpleContent>
+												<xsd:extension base="xsd:string">
+													<xsd:attribute name="isRest" type="xsd:boolean" use="required"/>
+													<xsd:attribute name="isPresent" type="xsd:boolean" use="required"/>
+												</xsd:extension>
+											</xsd:simpleContent>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="timeIn" type="xsd:time" />
+									<xsd:element name="timeOut" type="xsd:time" />
+									<xsd:element name="totalHours">
+										<xsd:complexType>
+											<xsd:simpleContent>
+												<xsd:extension base="xsd:integer">
+													<xsd:attribute name="renderedHours" type="xsd:integer" use="required"/>
+													<xsd:attribute name="overtimeHours" type="xsd:integer" use="required"/>
+												</xsd:extension>
+											</xsd:simpleContent>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+								<xsd:attribute name="value" type="xsd:date" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="value" type="xsd:date" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="empNo" type="xsd:positiveInteger" use="required"/>
+		<xsd:attribute name="month" type="xsd:gYearMonth" use="required"/>		
+	</xsd:complexType>
+</xsd:element>
+</xsd:schema>
